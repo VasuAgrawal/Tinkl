@@ -17,8 +17,15 @@ body {
 
 h1 {
   text-decoration: none;
-  font-family: "HelveticaNeue", Roboto, Arial;
+  font-family: "HelveticaNeue", Raleway, Roboto, Arial;
   font-size: 48px;
+}
+
+a {
+  text-decoration: none;
+  font-family: "HelveticaNeue", Roboto, Arial;
+  font-weight: bold;
+  color: blue;
 }
 
 .header {
@@ -57,8 +64,12 @@ h1 {
   padding-right: 30px;
   padding-top: 15px;
   color: black;
-  font-family: "HelveticaNeue", Raleway, Arial;
+  font-family: "HelveticaNeue", Roboto, Raleway, Arial;
   font-size: 20px;
+}
+
+.gallery {
+  padding-left: 180px;
 }
 
 small {
@@ -116,7 +127,7 @@ small {
 }
 
 #section0 {
-  background-image: url("files/logo_whitebg.png");
+  background-image: url("files/tinkl_logo.png");
   background-position: left top, 0% 45%;
   background-size: cover, 100%;
   background-repeat: no-repeat, no-repeat;
@@ -129,12 +140,13 @@ small {
   background-size: cover, 60%;
   background-repeat: no-repeat, no-repeat;
   background-attachment: fixed, fixed;
+  min-height: 660px;
   
 }
 
 #section2 {
   padding-top: 60px;
-  background-image: url("files/stock2.jpg");
+  background-image: url("files/stock4.jpg");
   background-position: left top, 0% 45%;
   background-size: cover, 60%;
   background-repeat: no-repeat, no-repeat;
@@ -143,7 +155,7 @@ small {
 
 #section3 {
   padding-top: 60px;
-  background-image: url("files/stock3.jpg");
+  background-image: url("files/stock2.jpg");
   background-position: left top, 6% 45%;
   background-size: cover, 60%;
   background-repeat: no-repeat, no-repeat;
@@ -152,20 +164,32 @@ small {
 
 #section4 {
   padding-top: 60px;
-  background-image: url("files/stock4.jpg");
+/*  background-image: url("files/stock4.jpg"); */
+/*  background: -webkit-linear-gradient(top #ffffff, bottom #e8e8e8); */
   background-position: left top, 6% 45%;
   background-size: cover, 60%;
   background-repeat: no-repeat, no-repeat;
   background-attachment: fixed, fixed;
+  min-height = 500px;
+/*  border-bottom: 3px solid #e8e8e8;*/
 }
+
+/*
+#section4gallery {
+
+}
+*/
 
 #section5 {
   padding-top: 60px;
 /*  background-image: url("files/stock1.jpg");*/
+/*  background: -webkit-linear-gradient(#ffffff, #e8e8e8); */
+  background: #f4f4f4; 
   background-position: left top, 6% 45%;
   background-size: cover, 60%;
   background-repeat: no-repeat, no-repeat;
   background-attachment: fixed, fixed;
+  min-height: 1000px;
 }
 
 #header5 {
@@ -175,17 +199,20 @@ small {
 #sectionteam {
   display: block;
   padding-top: 60px;
-  background-color: white;
+  background: white;
   background-position: left top, 6% 45%;
   background-size: cover, 60%;
   background-repeat: no-repeat, no-repeat;
   background-attachment: fixed, fixed;
 }
 
-#headerteam {
+#header4 {
   color: black;
 }
 
+#headerteam {
+  color: black;
+}
 
 #text1 {
   left: 0;
@@ -199,11 +226,28 @@ small {
   left: 0;
 }
 
-#text4 {
+#text4l {
+  left: 0;
+}
+
+#text4r {
   right: 0;
+}
+
+#text5l {
+  left: 0;
+}
+
+#text5r {
+  right: 0;
+}
+
+#description {
+  color: grey;
 }
 
 #return {
   text-decoration: none;
   font-size: small;
+  color: blue;
 }

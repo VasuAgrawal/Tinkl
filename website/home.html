@@ -30,8 +30,12 @@
           <h1>Concept</h1>
         </div>
         <div class="text">
-          <p>Tinkl is a health monitoring system spread out across the city that uses information from lavatory usage to allow individuals to keep tabs on their health on the go, and to allow the city to be apprised of the collective health of the city's population. </p>
-          <p>Our prototype integrates color, temperature, pH and a host of other sensors into an unobtrusive package that can collect data on a person's health from lavatory usage, and which can then wirelessly transfer the data to the individual upon request, or anonymize the data and transfer it to central servers that allow the city to monitor the population's health.</p>
+          <p align="justify">
+            Tinkl is a health monitoring system spread out across the city that uses information from lavatory usage to allow individuals to keep tabs on their health on the go, and to allow the city to be apprised of the collective health of the city's population. 
+          </p>
+          <p align="justify">
+            Our device integrates color, temperature, and turbidity sensors into an unobtrusive package that can operate in the messy environment of a urinal, sensing key properties of urine and transmitting an analysis of the data to individuals on demand, as well as to city authorities for centralized monitoring of a city's collective health.
+         </p>
         </div>
       </div>
     </div>
@@ -41,8 +45,11 @@
           <h1>Motivation</h1>
         </div>
         <div class="text">
-          <p>Currently, individuals do not have easy access to basic measures of their health such as temperature on the go; at the present moment, cities do not also have an effective means to track with frequency, the collective health of the city's population.</p>
-          <p>Our project aims to remedy this, by creating a small and cost-effective package that can be unobtrusively distributed around a city's many lavatories, and which can sense a person's health markers from a trip to the lavatory, making it easy for a person to keep tabs on his health anywhere and anytime, and allowing for the city's collective health to be monitored in real time.</p>
+          <p align="justify">
+            Currently, individuals do not have easy access to basic measures of their health such as temperature on the go; at the present moment, cities do not also have an effective means to track with frequency, the collective health of the city's population.
+          </p>
+          <p align="justify">Our project aims to remedy this, by creating a small and cost-effective package that can be unobtrusively distributed around a city's many lavatories, and which can sense a person's health markers from a trip to the lavatory, making it easy for a person to keep tabs on his health anywhere and anytime, and allowing for the city's collective health to be monitored in real time.
+          </p>
         </div>
       </div>
     </div>
@@ -52,29 +59,125 @@
           <h1>Requirements</h1>
         </div>
         <div class="text">
-          <p> C'est vrai </p>
+          <p> <b>Functional requirements</b> </p>
+          <ul>
+            <li> Urinal puck is capable of collecting urine and analyzing its color, clarity and temperature</li>
+            <li> Collection mechanism capable of preventing cross-contamination of urine samples across different individuals
+            <li> System is capable of predicting basic health markers like hydration level and basal body temperature from collected data </li>
+            <li> System provides means for individuals to log when they are using a urinal and access health data on demand via a smartphone app </li>
+            <li> System stores anonymized collected data on central server, visible only to city authorities for city-wide health monitoring</li>
+          </ul>
+          <p> <b>Non-functional requirements</b> </p>
+          <ul>
+            <li>Urinal puck should be small and waterproofed (up to IP65 rating)</li>
+            <li>Urinal puck should be unobtrusive, preventing user discomfort</li>
+            <li>Urinal puck should last ~2 weeks - 1 month on a battery</li>
+          </ul>
         </div>
       </div>
     </div>
     <div id="section4" class="content">
-      <div id="text4" class="subtext">
+      <div id="text4l" class="subtext">
         <div id="header4" class="header">
           <h1>Technical specs</h1>
         </div>
         <div class="text">
-          <p> C'est vrai </p>
+          <p> <b>Hardware</b> </p>
+          <ul>
+            <li><a href="https://www.adafruit.com/products/3055">Raspberry Pi 3 Model B (ARMv8, 1GB RAM)</a> - Adafruit, $39.95</li>
+            <li><a href="https://www.sparkfun.com/products/12829">RGB light sensor breakout board ISL29125</a> - Sparkfun, $7.95</li>
+            <li><a href="https://www.adafruit.com/product/1296">Infrared thermopile sensor breakout TMP006</a> - 	Adafruit, $9.95</li>
+            <li><a href="https://www.adafruit.com/products/381">Waterproof digital temperature sensor DS18B20</a> - Adafruit, $9.95</li>
+            <li><a href="https://www.sparkfun.com/products/12642">Sparkfun Sound Detector LMV324</a> - Sparkfun, $10.95</li>
+            <li><a href="https://www.sparkfun.com/products/9088">Mini photocell SEN09088</a> - Sparkfun, $1.50</li>
+            <li><a href="https://www.dfrobot.com/product-1394.html">Analog turbidity sensor SEN0189</a> - DFRobot, $9.90</li>
+            <li><a href="https://www.sparkfun.com/products/13990">nRF52832 breakout (microcontroller + radio)</a> - Sparkfun, $19.95</li>
+            <li><a href="http://www.digikey.com/product-detail/en/tadiran-batteries/TL-5903-S/439-1014-ND/512516">3.6V 2.4Ah Tadiran lithium batteries TL-5903/S</a> - Digikey, $9.27</li>
+            <li><a href="https://www.amazon.com/Sunnytech-100mA-Solar-Panel-80-10A100/dp/B008J9BZIA/ref=sr_1_1?ie=UTF8&qid=1486690123&sr=8-1&keywords=solar%20cell">Sunnytech 0.5W 5V 100mA Solar Panel 80x80mm</a> - Amazon, $6.99</li>
+
+          </ul>
+        </div>
+      </div>
+      <div id="text4r" class="subtext">
+        <div class="text">
+          <br></br>
+          <br></br>
+          <br></br>
+          <p> <b>Software</b> </p>
+            <ul>
+              <li><a href="http://www.open-emr.org/">Open-EMR</a> - open source electronic health/medical records-keeping system. Can be connected to a MySQL server that stores collected health data.</li>
+              <li><a href="https://dev.mysql.com/">MySQL</a> - open source database technology that can be used to store collected health data.</li>
+            </ul>
+          <p> <b>Protocols</b> </p>
         </div>
       </div>
     </div>
+    <div id="section4gallery">
+      <div class="gallery" style="margin:0 auto;">
+        <img src="files/raspi3.jpg" alt="Raspberry Pi 3" style="width:250px;height:180px"/>
+        <img src="files/isl29125.jpg" alt="ISL29125 color sensor" style="width:250px;height:180px"/>
+         <img src="files/tmp006.jpg" alt="TMP006 contactless temperature sensor" style="width:250px;height:180px"/>
+          <img src="files/ds18b20.jpg" alt="DS18B20 temperature sensor" style="width:250px;height:180px"/>
+      </div>
+      <div class="gallery">
+  <img src="files/sound_detector.jpg" alt="Sound Detector" style="width:250px;height:180px"/>
+        <img src="files/photocell.jpg" alt="Mini photocell" style="width:250px;height:180px"/>
+         <img src="files/turbidity.jpg" alt="Analog turbidity sensor" style="width:250px;height:180px"/>
+          <img src="files/micro_radio.jpg" alt="nRF52832" style="width:250px;height:180px"/>
+      </div>
+      <div class="gallery">
+        <img src="files/tadiran_battery.jpg" alt="Tadiran Lithium Battery" style="width:250px;height:180px"/>
+        <img src="files/solar_cell.jpg" alt="Sunnytech 80x80mm solar cell" style="width:250px;height:180px"/>
+      </div>
+      <br></br>
+      <br></br>
+      <br></br>
+    </div>
     <div id="section5" class="content">
-      <div class="header" id="header5">
-        <h1> Competitive analysis </h1>
+      <div id="text5l" class="subtext">
+        <div class="header" id="header5">
+          <h1> Competitive analysis </h1>
+        </div>
+        <div class="text">
+          <p> 
+            <a href="http://underworlds.mit.edu/"> Underworlds </a> 
+         - project by MIT's Senseable City Lab 
+          </p>
+          <p id="description" align="justify">
+            Research project analyzing wastewater and sewage for biomarkers of human health, with the goal of massively collecting data and using ananalytics to allow the health of the city to be monitored, from the scale of a neighborhood to the aggregate health of the entire city.
+          </p>
+          <p id="description" align="justify">
+            While this project aims to enable city-wide health monitoring through large-scale, city-wide data collection and analytics just like the Underworlds project, we also aim to provide individuals with the ability to have their health assessed on demand, by providing an interface through which they can log their lavatory usage and access their collected health data.
+          </p>
+          <br></br>
+          <p>
+            <a href="https://singularityhub.com/2009/05/12/smart-toilets-doctors-in-your-bathroom/"> Toto Intelligence Toilet </a>
+          </p>
+          <p id="description" align="justify">
+            A smart toilet designed by Japanese toilet-maker Toto, that features a "sample catcher" capable of obtaining urine samples, and which can track your urine temperature, analyze glucose levels and transmit the information to your computer over WiFi, for closer inspection by yourself or a trained physician. 
+          </p>
+          <p id="description" align="justify">
+            This project is targeted at high-end personal health analytics (it features expensive analysis techniques such as glucose analysis and limited communication); in contrast, we aim to create a low-cost highly networked array of smart urine analyzers that can be used by individuals over a broad swath of geographic locations at any point in time, and which can allow for aggregate health of large areas to be tracked.
+          </p>
+        </div>
       </div>
-      <!--
-      <div class="text">
-        <p> C'est vrai </p>
+      <div id="text5r" class="subtext">
+        <div class="text">
+          <br></br>
+          <br></br>
+          <br></br>
+          <p>
+            <a href="https://hackaday.io/project/2387-hospital-in-a-toilet"> Hospital in a Toilet </a> - Hackaday project
+          </p>
+          <p id="description" align="justify">
+            Project to create a compact device that can be embedded in an individual's toilet and which can perform basic urinalysis (particularly analyzing color and specific gravity of urine) to ease monitoring of both general health as well as chronic medical conditions.
+          </p>
+          <p id="description" align="justify">
+            Our project essentially scales the "Hospital in a Toilet" idea up, aiming to create a cost-effective distributed network of such "hospitals" across the city to allow individuals the convenience of checking on their health at any geographical location at any time, while also facilitating city-wide health monitoring.
+          </p>
+          <img src="files/hospital_in_a_toilet.png" style="width:368px;height:250px;" align="middle">
+        </div>
       </div>
-      -->
     </div>
     <div id="sectionteam" class="content">
       <div class="header" id="headerteam">
