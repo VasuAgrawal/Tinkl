@@ -76,6 +76,22 @@
         </div>
       </div>
     </div>
+	<div id="sectionusecase" class="content">
+	  <div id="textusecase" class="subtext">
+		 <div id="header4" class="header">
+          <h1>Use cases</h1>
+        </div>
+		<div class="text">
+		  Our systems are designed to allow people to increase awareness of their health, by enhancing the accessibility of key health markers available in urine. We envision several possible use cases for this system:
+		  <ul>
+			<li> Similar to <a href="http://www.hydralert.com/">Hydralert's</a> concept, our system can enhance workplace safety. 
+In industries necessitating outdoor activity, this can allow workers to be aware of markers such as their body temperature and hydration levels, and adjust their water intake accordingly to ensure that they do not suffer the adverse effects of heat stroke or other heat and hydration-related ailments.
+Employers will be able to monitor their employees overall hydration and health markers, and respond accordingly to encourage better employee health and safety while on the job.</li>
+			<li>Our system also provides a means for individuals to be more cognizant of their health. In urban areas where our system is ubiquitous, an individual's health information can be easily analyzed, and will be collated and made available in an easily understandable format at the touch of a button.</li>
+		  </ul> 
+		</div>
+	  </div>
+	</div>
     <div id="section4" class="content">
       <div id="text4l" class="subtext">
         <div id="header4" class="header">
@@ -87,13 +103,16 @@
             <li><a href="https://www.adafruit.com/products/3055">Raspberry Pi 3 Model B (ARMv8, 1GB RAM)</a> - Adafruit, $39.95</li>
             <li><a href="https://www.sparkfun.com/products/12829">RGB light sensor breakout board ISL29125</a> - Sparkfun, $7.95</li>
             <li><a href="https://www.adafruit.com/product/1296">Infrared thermopile sensor breakout TMP006</a> - 	Adafruit, $9.95</li>
-            <li><a href="https://www.adafruit.com/products/381">Waterproof digital temperature sensor DS18B20</a> - Adafruit, $9.95</li>
-            <li><a href="https://www.sparkfun.com/products/12642">Sparkfun Sound Detector LMV324</a> - Sparkfun, $10.95</li>
-            <li><a href="https://www.sparkfun.com/products/9088">Mini photocell SEN09088</a> - Sparkfun, $1.50</li>
+			<li><a href="https://www.digikey.com/product-detail/en/us-sensor/PS103J2/615-1003-ND/1014531">NTC thermistor</a> - Digikey, $2.26</li>
             <li><a href="https://www.dfrobot.com/product-1394.html">Analog turbidity sensor SEN0189</a> - DFRobot, $9.90</li>
-            <li><a href="https://www.sparkfun.com/products/13990">nRF52832 breakout (microcontroller + radio)</a> - Sparkfun, $19.95</li>
-            <li><a href="http://www.digikey.com/product-detail/en/tadiran-batteries/TL-5903-S/439-1014-ND/512516">3.6V 2.4Ah Tadiran lithium batteries TL-5903/S</a> - Digikey, $9.27</li>
-            <li><a href="https://www.amazon.com/Sunnytech-100mA-Solar-Panel-80-10A100/dp/B008J9BZIA/ref=sr_1_1?ie=UTF8&qid=1486690123&sr=8-1&keywords=solar%20cell">Sunnytech 0.5W 5V 100mA Solar Panel 80x80mm</a> - Amazon, $6.99</li>
+            <li><a href="http://www.gearbest.com/transmitters-receivers-module/pp_218375.html?wid=21">nRF24L01+ Enhanced Wireless Module</a> - GearBest, $0.99</li>
+			<li><a href="http://www.mouser.com/ProductDetail/Microchip/ATMEGA328P-PN/?qs=6Dg1WZIWLC4IRXxsq4v5tA%3D%3D&gclid=CjwKEAjwlKLHBRDztKr6wMnRthMSJAALcT-sWZq5du9UyXFhWGNH5FkwMWp2oCt7id7sCQNMJdE4fhoCCG3w_wcB"> ATMega328P microcontroller</a> - Mouser, $2.26</li>
+			<li><a href="http://www.mouser.com/ProductDetail/Microchip-Technology/MCP1700-3302E-TO/?qs=h7tZ5KkzNMMPEB66r2rMQw%3D%3D">MCP1700 low quiescent current regulator</a> - Mouser, $0.40</li>
+			<li><a href="http://www.mouser.com/ProductDetail/Microchip-Technology/MCP3426A0-E-SN/?qs=sGAEpiMZZMtgJDuTUz7XuzWo0wJcCr0HZ6szMAC%2f19M%3d">MCP3426 16-bit ADC</a> - Mouser, $2.84</li>
+			<li><a href="http://www.mouser.com/ProductDetail/Microchip-Technology-Micrel/MIC5219-50YMM/?qs=kh6iOki%2FeLGcAZQ4JCOeow%3D%3D">MIC5219 500mA-peak LDO regulator</a> - Mouser, $1.26</li>
+            <li><a href="https://www.amazon.com/Duracell-Coppertop-Alkaline-Aa-Count/dp/B0035LCFNQ/ref=zg_bs_389577011_12?_encoding=UTF8&refRID=1QN7TV32WRS8P8SPSJGH&th=1">1.5V Alkaline AA batteries (4x per puck)</a> - Amazon, $2.30</li>
+			<li>Custom-designed PCB combining sensing, comms and MCU</li>
+			<li>Custom-designed, 3D-printed plastic puck</li>
 
           </ul>
         </div>
@@ -109,26 +128,34 @@
               <li><a href="https://dev.mysql.com/">MySQL</a> - open source database technology that can be used to store collected health data.</li>
             </ul>
           <p> <b>Protocols</b> </p>
+			<ul>
+			  <li>Protocol for puck's radio to communicate with Raspberry Pi hub</li>
+			  <img src="files/radio_protocol.png" title="Radio to RasPi hub protocol" style="width:480px;height:75px">
+			</ul>
         </div>
       </div>
     </div>
     <div id="section4gallery">
       <div class="gallery" style="margin:0 auto;">
-        <img src="files/raspi3.jpg" alt="Raspberry Pi 3" style="width:250px;height:180px"/>
-        <img src="files/isl29125.jpg" alt="ISL29125 color sensor" style="width:250px;height:180px"/>
-         <img src="files/tmp006.jpg" alt="TMP006 contactless temperature sensor" style="width:250px;height:180px"/>
-          <img src="files/ds18b20.jpg" alt="DS18B20 temperature sensor" style="width:250px;height:180px"/>
+        <img src="files/raspi3.jpg" title="Raspberry Pi 3" style="width:250px;height:180px"/>
+        <img src="files/isl29125.jpg" title="ISL29125 color sensor" style="width:250px;height:180px"/>
+         <img src="files/tmp006.jpg" title="TMP006 contactless temperature sensor" style="width:250px;height:180px"/>
+          <img src="files/ntc_thermistor.png" title="NTC Thermistor (Temperature sensing)" style="width:250px;height:180px"/>
       </div>
       <div class="gallery">
-  <img src="files/sound_detector.jpg" alt="Sound Detector" style="width:250px;height:180px"/>
-        <img src="files/photocell.jpg" alt="Mini photocell" style="width:250px;height:180px"/>
-         <img src="files/turbidity.jpg" alt="Analog turbidity sensor" style="width:250px;height:180px"/>
-          <img src="files/micro_radio.jpg" alt="nRF52832" style="width:250px;height:180px"/>
+  		<img src="files/nrf24l01.jpg" title="nRF24L01+ Enhanced Wireless Module" style="width:250px;height:180px"/>
+        <img src="files/atmega328p.jpg" title="ATMega328P MCU" style="width:250px;height:180px"/>
+         <img src="files/turbidity.jpg" title="DFRobot analog turbidity sensor" style="width:250px;height:180px"/>
+          <img src="files/mcp3426.png" title="MCP3426 16-bit ADC" style="width:250px;height:180px"/>
       </div>
       <div class="gallery">
-        <img src="files/tadiran_battery.jpg" alt="Tadiran Lithium Battery" style="width:250px;height:180px"/>
-        <img src="files/solar_cell.jpg" alt="Sunnytech 80x80mm solar cell" style="width:250px;height:180px"/>
+        <img src="files/mcp1700.jpg" title="MCP1700 low quiescent current regulator" style="width:250px;height:180px"/>
+        <img src="files/mic5219.jpg" title="MIC5219 high peak current regulator" style="width:250px;height:180px"/>
+        <img src="files/alkaline_battery.jpg" title="AA alkaline batteries" style="width:250px;height:180px"/>
       </div>
+	  <div class="gallery">
+	    <img src="files/puck.png" title="Plastic puck design with PCB and turbidity sensor inside" style="width:700px; height:500px">
+	  </div>
       <br></br>
       <br></br>
       <br></br>
