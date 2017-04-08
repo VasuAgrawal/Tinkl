@@ -11,12 +11,15 @@
     <div id="bar">
       <div id="navigation" >
         <ul>
-          <li><a class="smoothScroll" href="#section1">concept</a></li>
-          <li><a class="smoothScroll" href="#section2">motivation</a></li>
-          <li><a class="smoothScroll" href="#section3">requirements</a></li>
-          <li><a class="smoothScroll" href="#section4">specs</a></li>
-          <li><a class="smoothScroll" href="#section5">comparison</a></li> <!-- competitive analysis -->
-          <li><a class="smoothScroll" href="#sectionteam">team</a></li>
+          <li><a class="smoothScroll" href="#section1">Concept</a></li>
+          <li><a class="smoothScroll" href="#section2">Motivation</a></li>
+          <li><a class="smoothScroll" href="#section3">Requirements</a></li>
+          <li><a class="smoothScroll" href="#sectionusecase">Use Cases</a></li>
+          <li><a class="smoothScroll" href="#section4">Specs</a></li>
+          <li><a class="smoothScroll" href="#section5">Competitive Analysis</a></li> <!-- competitive analysis -->
+          <li><a class="smoothScroll" href="#sectionarchitecture">Architecture</a></li>
+          <li><a class="smoothScroll" href="#sectioninteraction">Interaction</a></li>
+          <li><a class="smoothScroll" href="#sectionteam">Team</a></li>
         </ul>
       </div>
     </div>
@@ -39,6 +42,8 @@
         </div>
       </div>
     </div>
+
+
     <div id="section2" class="content">
       <div id="text2" class="subtext">
         <div id="header2" class="header">
@@ -53,6 +58,8 @@
         </div>
       </div>
     </div>
+
+
     <div id="section3" class="content">
       <div id="text3" class="subtext">
         <div id="header3" class="header">
@@ -76,6 +83,8 @@
         </div>
       </div>
     </div>
+
+
 	<div id="sectionusecase" class="content">
 	  <div id="textusecase" class="subtext">
 		 <div id="header4" class="header">
@@ -92,6 +101,8 @@ Employers will be able to monitor their employees overall hydration and health m
 		</div>
 	  </div>
 	</div>
+
+
     <div id="section4" class="content">
       <div id="text4l" class="subtext">
         <div id="header4" class="header">
@@ -135,6 +146,8 @@ Employers will be able to monitor their employees overall hydration and health m
         </div>
       </div>
     </div>
+
+
     <div id="section4gallery">
       <div class="gallery" style="margin:0 auto;">
         <img src="files/raspi3.jpg" title="Raspberry Pi 3" style="width:250px;height:180px"/>
@@ -160,6 +173,8 @@ Employers will be able to monitor their employees overall hydration and health m
       <br></br>
       <br></br>
     </div>
+
+
     <div id="section5" class="content">
       <div id="text5l" class="subtext">
         <div class="header" id="header5">
@@ -206,6 +221,68 @@ Employers will be able to monitor their employees overall hydration and health m
         </div>
       </div>
     </div>
+
+
+    <div id="sectionarchitecture" class="content">
+      <div class="subtext">
+        <div class="headerblack"> <h1>Architecture</h1> </div>
+        <div class="text">
+          <p align="justify">
+Based on our design requirements, our lavatory health monitoring system has two
+primary users and end-goals in mind: to help individuals gain easy access to
+health monitoring city-wide, and to enable monitoring of the city's collective
+health through distributed urinalysis. System-wide, our architecture will adopt
+a hub-and-spoke model, with multiple sensing nodes in each bathroom (urinal
+pucks) connecting to a local bathroom-level server/gateway which performs
+analysis and interacts with individuals requesting personal health data, and
+which also funnels data to a central city server.
+          </p>
+<img src="files/arch1.png" style="width:100%;" align="middle">
+
+<p align="justify">
+In order to gather data, the user will urinate into the urinal. The puck will
+collect this urine passively and will be woken up by the presence of urine. Once
+woken up, it will begin sensing and data collection and stream its results to
+the hub located in the bathroom. The hub will aggregate data from multiple pucks
+and periodically send it to the city-wide server for further processing. A user
+can also connect to the local hub to gather basic analytics and data after
+indicating their desire to receive such data.
+</p>
+
+        </div>
+      </div>
+    </div>
+
+    <div id="sectionarchitecture2" class="content">
+        <div class="subtext">
+            <div class="headerblack"> <h2>Information Flow</h2> </div>
+            <img src="files/arch4.png" style="width:100%;" align="middle">
+        </div>
+    </div>
+   
+
+    <div id="sectioninteraction" class="content">
+      <div class="subtext">
+        <div class="headerblack"> <h1>System Interaction</h1> </div>
+        <div class="text">
+          <p align="justify">
+Our system uses a number of different technologies to facilitate all of the
+communication between different components. Below we've detailed the methods by
+which each component will talk to each other component. For simplicity, only one
+puck and hub are drawn, though the communication technologies between the pucks
+and hub, as well as those between hubs and central server, trivially scale to
+multiple connected devices. In short, the puck communicates with all of its
+various sensors through either an I2C ADC or directly over I2C. The puck
+transmits its data to the hub over an I2C radio, which then forwards the
+information to the server via WiFi.
+          </p>
+
+          <img  src="files/interaction.png" style="width:100%;">
+        </div>
+      </div>
+    </div>
+
+
     <div id="sectionteam" class="content">
       <div class="header" id="headerteam">
         <h1>Team members</h1>

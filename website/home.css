@@ -35,6 +35,13 @@ a {
   font-family: "HelveticaNeue", Roboto, Arial;
 }
 
+.headerblack {
+  padding-left: 25px;
+  padding-top: 30px;
+  color: black;
+  font-family: "HelveticaNeue", Roboto, Arial;
+}
+
 .content {
   display: flex;
   flex-direction: row;
