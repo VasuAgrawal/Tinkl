@@ -2,7 +2,7 @@
 
 static MCP342X *node_adc;
 
-#define PIN A0
+#define PIN A1
 
 bool init_turbidity(MCP342X *adc){
   node_adc = adc;

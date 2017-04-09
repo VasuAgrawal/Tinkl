@@ -22,7 +22,7 @@
 
 // Set NODE_ID to a default value if it was not specified with a compiler flag
 #ifndef NODE_ID
-    #define NODE_ID 549
+    #define NODE_ID 18549
 #endif
 
 /**********************************************************/
@@ -35,7 +35,7 @@ RF24 radio(8,7); //(ce,csn)
 
 /**********************************************************/
 
-#define SAMPLE_PERIOD 1000 // milliseconds
+#define SAMPLE_PERIOD 100 // milliseconds
 
 /**********************************************************/
 
@@ -47,7 +47,19 @@ MCP342X MCP_ADC;
 
 /**********************************************************/
 
+#define POWER_MCP_PIN 6
+#define POWER_NRF_PIN 9
+#define POWER_ISL_PIN 10
+
 void setup() {
+    pinMode(POWER_ISL_PIN, OUTPUT);
+    digitalWrite(POWER_ISL_PIN, HIGH);
+    pinMode(POWER_NRF_PIN, OUTPUT);
+    digitalWrite(POWER_NRF_PIN, HIGH);
+    pinMode(POWER_MCP_PIN, OUTPUT);
+    digitalWrite(POWER_MCP_PIN, HIGH);
+    delay(100);
+
     Serial.begin(115200);
 
     // Initialize radio
