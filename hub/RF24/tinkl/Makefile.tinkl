@@ -1,0 +1,25 @@
+BINARY_PREFIX = tinkl
+SOURCES = $(PROGRAMS:=.cpp)
+
+LIBS=-l$(LIB)
+ifeq ($(DRIVER), LittleWire)
+	LIBS+= -llittlewire-spi
+endif
+
+all: $(PROGRAMS)
+
+$(PROGRAMS): $(SOURCES)
+	$(CXX) $(CFLAGS) -I$(HEADER_DIR)/.. -I.. -L$(LIB_DIR) $@.cpp $(LIBS) -o $@
+
+clean:
+	@echo "[Cleaning]"
+	rm -rf $(PROGRAMS)
+
+install: all
+	@echo "[Installing examples to $(EXAMPLES_DIR)]"
+	@mkdir -p $(EXAMPLES_DIR)
+	@for prog in $(PROGRAMS); do \
+		install -m 0755 $${prog} $(EXAMPLES_DIR)/$(BINARY_PREFIX)-$${prog}; \
+	done
+
+.PHONY: install upload
