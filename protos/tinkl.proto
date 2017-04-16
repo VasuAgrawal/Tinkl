@@ -23,3 +23,15 @@ message Urination {
 
     repeated Sample samples = 5;
 }
+
+
+message PuckId {
+    uint64 hub_id = 1; // ID of the hub, unique globally
+    uint64 sensor_node_id = 2; // ID of the puck, unique within hub
+}
+
+
+service Tinkl {
+    rpc getUrination(PuckId) returns (Sample) {}
+    rpc getAllUrination(PuckId) returns (stream Sample) {}
+}

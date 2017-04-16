@@ -18,6 +18,7 @@ from tinkl_pb2 import Urination
 # Custom imports
 import packet
 
+
 class DataServer(tornado.tcpserver.TCPServer):
     
     @tornado.gen.coroutine
@@ -49,6 +50,7 @@ if __name__ == "__main__":
         PORT = int(sys.argv[1])
     except:
         PORT = 8888
+
 
     logging.info("Echo server starting to listen on %d", PORT)
     DataServer().listen(PORT)
