@@ -7,6 +7,7 @@ import threading
 from concurrent import futures
 import time
 import copy
+from urllib.request import urlopen
 
 # Tornado library imports
 import tornado
@@ -120,14 +121,19 @@ class DataServer(tornado.tcpserver.TCPServer):
 if __name__ == "__main__":
     logging.getLogger().setLevel(logging.DEBUG)
 
+    try:
+        my_ip = urlopen("http://ip.42.pl/raw").read().decode('ascii')
+    except:
+        my_ip = "localhost" 
+
     logging.debug("Starting gRPC thread pool.")
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     tinkl_pb2_grpc.add_TinklServicer_to_server(TinklServer(), server)
-    server.add_insecure_port("localhost:%d" % args.grpc_port)
-    logging.debug("Starting gRPC server on port %d.", args.grpc_port)
+    server.add_insecure_port("%s:%d" % (my_ip, args.grpc_port))
+    logging.info("Starting gRPC server on port %s:%d.", my_ip, args.grpc_port)
     server.start()
 
-    logging.debug("Starting data server on port %d.", args.data_port)
+    logging.info("Starting data server on port %d.", args.data_port)
     DataServer().listen(args.data_port)
 
     try:
