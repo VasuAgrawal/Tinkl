@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.tinkl.tinkl";
+option java_outer_classname = "TinklProto";
+option objc_class_prefix = "TKL";
+
+package routeguide;
+
+message Color {
+    uint32 r = 1;
+    uint32 g = 2;
+    uint32 b = 3;
+}
+
+
+message Sample {
+    int32 sample_id = 1; // Unique within urination, monotonic
+    float temperature = 2; // Temperature reading in C
+    int32 turbidity = 3;
+    Color color = 4;
+}
+
+
+message Urination {
+    uint64 hub_id = 1; // ID of the hub, unique globally
+    uint64 sensor_node_id = 2; // ID of the puck, unique within hub
+    uint64 urination_id = 3; // ID of the urination, unique within puck
+    float sensor_battery_voltage = 4;
+
+    repeated Sample samples = 5;
+}
+
+
+message PuckId {
+    uint64 hub_id = 1; // ID of the hub, unique globally
+    uint64 sensor_node_id = 2; // ID of the puck, unique within hub
+}
+
+
+service Tinkl {
+    rpc getUrination(PuckId) returns (Sample) {}
+    rpc getAllUrination(PuckId) returns (stream Sample) {}
+}

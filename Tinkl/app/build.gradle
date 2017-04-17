@@ -1,0 +1,64 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.protobuf'
+apply plugin: 'idea'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "com.tinkl.tinkl"
+        minSdkVersion 21
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+idea {
+    module {
+        // Use "${protobuf.generatedFilesBaseDir}/main/javalite" for LITE_RUNTIME protos
+        sourceDirs += file("${protobuf.generatedFilesBaseDir}/main/javalite");
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.2.0'
+    }
+    plugins {
+        javalite {
+            artifact = "com.google.protobuf:protoc-gen-javalite:3.0.0"
+        }
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.2.0' // CURRENT_GRPC_VERSION
+        }
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.plugins {
+                javalite {}
+                grpc {
+                    // Options added to --grpc_out
+                    option 'lite'
+                }
+            }
+        }
+    }
+    generatedFilesBaseDir = "$projectDir/src/generated"
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.google.android.gms:play-services-vision:10.2.1'
+    compile 'io.grpc:grpc-okhttp:1.2.0' // CURRENT_GRPC_VERSION
+    compile 'io.grpc:grpc-protobuf-lite:1.2.0' // CURRENT_GRPC_VERSION
+    compile 'io.grpc:grpc-stub:1.2.0'
+    compile 'javax.annotation:javax.annotation-api:1.2'
+}
