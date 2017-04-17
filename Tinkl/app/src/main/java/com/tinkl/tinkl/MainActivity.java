@@ -36,11 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
     private Resources res;
 
-    private ManagedChannel mChannel;
-    private TinklBlockingStub blockingStub;
-    private static String host = "10.0.2.2";
-    private static int port = 5000;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        ManagedChannel mChannel;
+        TinklBlockingStub blockingStub;
         if (requestCode == BARCODE_READER_REQUEST_CODE) {
             if (resultCode == CommonStatusCodes.SUCCESS) {
                 if (data != null) {
@@ -79,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                     String ids = barcode.displayValue;
                     String[] requestIds = ids.split(",");
 
-                    mChannel = ManagedChannelBuilder.forTarget("10.0.2.2:5000").usePlaintext(true).build();
+                    mChannel = ManagedChannelBuilder.forTarget("128.237.165.27:5000").usePlaintext(true).build();
                     blockingStub = TinklGrpc.newBlockingStub(mChannel);
                     PuckId request = PuckId.newBuilder().setHubId(
                             Integer.parseInt(requestIds[0])).setSensorNodeId(Integer.parseInt(requestIds[1])).build();
