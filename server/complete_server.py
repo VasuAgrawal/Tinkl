@@ -41,6 +41,8 @@ class TinklServer(tinkl_pb2_grpc.TinklServicer):
         global urination_data
         global urination_data_lock
 
+        logging.info("gRPC Server received a request!")
+
         with urination_data_lock:
             key = (request.hub_id, request.sensor_node_id)
             if key in urination_data:
