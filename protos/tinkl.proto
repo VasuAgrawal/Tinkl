@@ -1,5 +1,12 @@
 syntax = "proto3";
 
+option java_multiple_files = true;
+option java_package = "com.tinkl.tinkl";
+option java_outer_classname = "TinklProto";
+option objc_class_prefix = "TKL";
+
+package routeguide;
+
 message Color {
     uint32 r = 1;
     uint32 g = 2;
