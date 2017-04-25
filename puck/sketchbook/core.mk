@@ -58,7 +58,7 @@ $(info Included libraries: $(INCLUDED_LIBS))
 
 # Generate list of library directories
 AVAILABLE_LIBS := $(notdir $(wildcard $(addsuffix /*, $(LIBRARYPATH))))
-# $(info Available libraries: $(AVAILABLE_LIBS))
+$(info Available libraries: $(AVAILABLE_LIBS))
 
 LIBS := $(filter $(AVAILABLE_LIBS), $(INCLUDED_LIBS))
 $(info Will compile: $(LIBS))

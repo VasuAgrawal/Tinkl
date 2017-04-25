@@ -10,14 +10,16 @@
 SFE_ISL29125 RGB_sensor;
 
 void setup() {
+    pinMode(10, OUTPUT);
+    digitalWrite(10, HIGH);
     Serial.begin(115200);
 
       // Initialize the ISL29125 with simple configuration so it starts sampling
     if (RGB_sensor.init()){
-        // Serial.println("Sensor Init Successful");
+        Serial.println("Sensor Init Successful");
     }
     else{
-        // Serial.println("Sensor Init Unsuccessful");
+        Serial.println("Sensor Init Unsuccessful");
     }
 }
 

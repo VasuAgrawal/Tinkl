@@ -7,6 +7,11 @@
 MCP342X MCP_ADC;
 
 void setup(){
+  pinMode(6, OUTPUT);
+  digitalWrite(6, HIGH);
+
+  delay(500);
+
   Wire.begin();  // join I2C bus
   TWBR = 12;  // 400 kHz (maximum)
 
@@ -28,7 +33,9 @@ void setup(){
 
 float raw_to_voltage(int16_t adc_reading){
   // Assumes we are in 16-bit mode
-  return (float)adc_reading / (float)(0x7FFF) * 2.048;
+  // return (float)adc_reading * 2.048 / (float)(0x7FFF);
+  return (float)adc_reading * 2.048 / (float)(0x8000);
+  // return (float)adc_reading * 0.0000625;
 }
 
 int main(){
@@ -48,7 +55,7 @@ int main(){
     // Serial.print(result);    
     Serial.print(raw_to_voltage(result));
     Serial.print("  ");
-    Serial.print((float)inbuilt_adc / 1023.0 * 3.7);
+    Serial.print((float)inbuilt_adc / 1023.0 * 3.3875);
     Serial.print("  ");
     // Serial.println(result, HEX);
     Serial.println();
