@@ -22,6 +22,8 @@
 #define WAKE_UP_DELTA_THRESHOLD 10
 #define WAKE_UP_ABSOLUTE_THRESHOLD 520
 
+#define MS_BETWEEN_URINATIONS 10000 // milliseconds
+
 /**********************************************************/
 
 #define MAX_SAMPLES 10
@@ -50,9 +52,11 @@ void setup() {
     pinMode(POWER_THERM_PIN, OUTPUT);
     pinMode(POWER_TURB_PIN, OUTPUT);
     pinMode(POWER_COLOR_PIN, OUTPUT);
+    pinMode(POWER_RADIO_PIN, OUTPUT);
     digitalWrite(POWER_THERM_PIN, HIGH);
     digitalWrite(POWER_TURB_PIN, HIGH);
     digitalWrite(POWER_COLOR_PIN, HIGH);
+    digitalWrite(POWER_RADIO_PIN, HIGH);
 
     Serial.begin(115200);
     Serial.println("Starting!");
@@ -150,6 +154,9 @@ void wake_up(){
         tinkl_packet *pkt = make_packet();
         print_packet(*pkt);
 
+        // Set the "last sample" flag
+        pkt->last_packet = (sc + 1 == MAX_SAMPLES);
+
         // Send it!
         Serial.print("Sending... ");
         uint8_t result = send((uint8_t*) pkt, sizeof(tinkl_packet));
@@ -185,6 +192,7 @@ int main(){
         || pressed()
         ){
             wake_up();
+            delay(MS_BETWEEN_URINATIONS);
         }
         prev_temp = analogRead(THERM_ANALOG_IN);
     }

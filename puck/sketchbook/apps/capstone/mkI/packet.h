@@ -10,6 +10,7 @@ struct tinkl_packet{
     uint32_t packet_id;
     uint16_t battery_voltage;
     uint16_t checksum;
+    uint8_t last_packet;
 }__attribute__((packed));
 
 // The "packed" attribute tells GCC to omit padding between fields
