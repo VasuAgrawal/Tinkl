@@ -9,9 +9,11 @@
 // Declare sensor object
 SFE_ISL29125 RGB_sensor;
 
+#define POWER_SYS_PIN 7
+
 void setup() {
-    pinMode(10, OUTPUT);
-    digitalWrite(10, HIGH);
+    pinMode(POWER_SYS_PIN, OUTPUT);
+    digitalWrite(POWER_SYS_PIN, HIGH);
     Serial.begin(115200);
 
       // Initialize the ISL29125 with simple configuration so it starts sampling

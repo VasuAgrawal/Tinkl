@@ -3,9 +3,9 @@
 
 #define LOW_POWER
 
-#define BLINK_HIGH_MICROSECONDS 1
+#define BLINK_HIGH_MICROSECONDS 10
 
-#define LEDPIN 13
+#define LEDPIN 6
 #define MAX_BLINKS 1
 
 void setup(){

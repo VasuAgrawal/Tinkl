@@ -4,18 +4,25 @@
 
 #include <Arduino.h>
 
-#define TEMP_PIN A0
+#define POWER_THERM_PIN 5
+#define POWER_SYS_PIN 7
+
+#define THERM_ANALOG_IN A0
+
+
 #define V_MAX 3.2
 
 #define V_DEG_0 0.500
 #define TEMP_COEFF 0.01
 
 void setup(){
+    pinMode(POWER_THERM_PIN, OUTPUT);
+    digitalWrite(POWER_THERM_PIN, HIGH);
     Serial.begin(115200);
 }
 
 float temp(){
-    uint16_t adc_reading = analogRead(TEMP_PIN);
+    uint16_t adc_reading = analogRead(THERM_ANALOG_IN);
     Serial.println(adc_reading);
     return (((float) adc_reading / 1024.0) * V_MAX - V_DEG_0) / TEMP_COEFF;
 }
@@ -26,10 +33,10 @@ int main(){
 
     while(1){
         Serial.print("Temp: ");
-        Serial.println(temp());
+        // Serial.println(temp());
 
-        // Serial.print("A0: ");
-        // Serial.println(analogRead(A0));
+        Serial.print("A0: ");
+        Serial.println(analogRead(A0));
 
         // Serial.print("A4: ");
         // Serial.println(analogRead(A4));

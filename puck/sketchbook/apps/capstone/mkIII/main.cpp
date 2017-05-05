@@ -23,7 +23,7 @@
 
 /**********************************************************/
 
-#define WAKE_UP_ABSOLUTE_THRESHOLD 500
+#define WAKE_UP_ABSOLUTE_THRESHOLD 490
 
 /**********************************************************/
 
@@ -67,11 +67,24 @@ void setup() {
     Serial.println("Starting!");
 
     pinMode(POWER_SYS_PIN, OUTPUT);
+    digitalWrite(POWER_SYS_PIN, HIGH);
+
+    Serial.println("0");
+
 
     // Initialize sensors
-    if(init_color() == false) Serial.println("Failed to init color sensor");   
+    if(init_color() == false) Serial.println("Failed to init color sensor"); 
+
+    Serial.println("1");
+
     if(init_temp() == false) Serial.println("Thermistor not present");   
+
+    Serial.println("2");
+
+
     if(init_turbidity() == false) Serial.println("Failed to init turbidity sensor");
+
+
     Serial.println("All sensors initialized");
 
     // Initialize radio
@@ -121,23 +134,39 @@ int main(){
     init();
     setup();
 
+    int i=0;
     while(1){
         LowPower.powerDown(SLEEP_250MS, ADC_OFF, BOD_OFF);  
+ 
+        // Serial.begin(115200);
+
+        // Serial.flush();
+
+        i++;
+        // Serial.println("Hi");
+        // Serial.println(i);
+
+        // delay(250);
 
         uint16_t cur_temp;
-        init_temp();
+        turn_on_temp();
         read_temp(cur_temp);
         turn_off_temp();
+ 
+        Serial.println(cur_temp);
+        Serial.flush();
+
         // Check if it's time to wake up
-        if(cur_temp < WAKE_UP_ABSOLUTE_THRESHOLD
+        if(
+        cur_temp < WAKE_UP_ABSOLUTE_THRESHOLD
         || pressed()
         ){
             wake_up();
 
             // Impose a 20-second timeout between separate urinations
-            LowPower.powerDown(SLEEP_8S, ADC_OFF, BOD_OFF);  
-            LowPower.powerDown(SLEEP_4S, ADC_OFF, BOD_OFF);  
-            LowPower.powerDown(SLEEP_8S, ADC_OFF, BOD_OFF);  
+        //     LowPower.powerDown(SLEEP_8S, ADC_OFF, BOD_OFF);  
+        //     LowPower.powerDown(SLEEP_4S, ADC_OFF, BOD_OFF);  
+        //     LowPower.powerDown(SLEEP_8S, ADC_OFF, BOD_OFF);  
         }
     }
     return 0;

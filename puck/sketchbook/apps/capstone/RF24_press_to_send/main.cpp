@@ -14,15 +14,18 @@
 
 #define PAYLOADLEN 32
 
+#define POWER_SYS_PIN 7
+
 uint8_t data[PAYLOADLEN]; // a data buffer
 
 /* Hardware configuration: Set up nRF24L01 radio on SPI bus plus pins 7 & 8 */
 RF24 radio(9,10); //(ce,csn)
+// RF24 radio(7,8); //(ce,csn)
 /**********************************************************/
 
 void setupRF24(){
-    pinMode(9, OUTPUT);
-    digitalWrite(9, HIGH);
+    pinMode(POWER_SYS_PIN, OUTPUT);
+    digitalWrite(POWER_SYS_PIN, HIGH);
     delay(100);
 
     radio.begin();

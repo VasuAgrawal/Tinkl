@@ -10,7 +10,10 @@ bool init_temp(){
   uint16_t val;
   read_temp(val);
   
-  ret = (val == 0 || val == 1023);
+  // Serial.print("Read: ");
+  // Serial.println(val);
+
+  ret = !(val == 0 || val == 1023);
 
   turn_off_temp();
   return ret;
