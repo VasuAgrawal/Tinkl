@@ -64,38 +64,6 @@ their health. In urban areas where our system is ubiquitous, an individual's
 health information can be easily analyzed, and will be collated and made
 available in an easily understandable format at the touch of a button.
 
-# Tech Specs
-
-## Hardware
-
-* Raspberry Pi 3 Model B (ARMv8, 1GB RAM) - Adafruit, $39.95
-* RGB light sensor breakout board ISL29125 - Sparkfun, $7.95 
-* Infrared thermopile sensor breakout TMP006 - Adafruit, $9.95
-* NTC thermistor - Digikey, $2.26
-* Analog turbidity sensor SEN0189 - DFRobot, $9.90
-* nRF24L01+ Enhanced Wireless Module - GearBest, $0.99
-* ATMega328P microcontroller - Mouser, $2.26
-* MCP1700 low quiescent current regulator - Mouser, $0.40
-* MCP3426 16-bit ADC - Mouser, $2.84
-* MIC5219 500mA-peak LDO regulator - Mouser, $1.26
-* 1.5V Alkaline AA batteries (4x per puck) - Amazon, 
-* $2.30 Custom-designed PCB combining sensing, comms and MCU
-* Custom-designed, 3D-printed plastic puck
-
-## Software
-
-* Open-EMR - open source electronic health/medical records-keeping system. Can 
-be connected to a MySQL server that stores collected health data.  
-* MySQL - open source database technology that can be used to store collected 
-health data.
-
-## Protocols
-
-Data format we have developed, to be used by puck to communicate with Raspberry
-Pi hub
-
-![Custom data protocol](/images/radio_protocol.png)
-
 # Competitive Analysis
 
 ## [UnderworldsMIT's Senseable City Lab](http://underworlds.mit.edu/)
@@ -111,8 +79,7 @@ project, we also aim to provide individuals with the ability to have their
 health assessed on demand, by providing an interface through which they can log
 their lavatory usage and access their collected health data.
 
-## [Toto Intelligence Toilet](
-https://singularityhub.com/2009/05/12/smart-toilets-doctors-in-your-bathroom/)
+## [Toto Intelligence Toilet](https://singularityhub.com/2009/05/12/smart-toilets-doctors-in-your-bathroom/)
 
 A smart toilet designed by Japanese toilet-maker Toto, that features a "sample
 catcher" capable of obtaining urine samples, and which can track your urine
@@ -126,8 +93,7 @@ of smart urine analyzers that can be used by individuals over a broad swath of
 geographic locations at any point in time, and which can allow for aggregate
 health of large areas to be tracked.
 
-## [Hospital in a Toilet - Hackaday project](
-https://hackaday.io/project/2387-hospital-in-a-toilet)
+## [Hospital in a Toilet - Hackaday project](https://hackaday.io/project/2387-hospital-in-a-toilet)
 
 Project to create a compact device that can be embedded in an individual's
 toilet and which can perform basic urinalysis (particularly analyzing color and
@@ -139,6 +105,52 @@ create a cost-effective distributed network of such "hospitals" across the city
 to allow individuals the convenience of checking on their health at any
 geographical location at any time, while also facilitating city-wide health
 monitoring.
+
+# Tech Specs
+
+## Urinal Puck
+
+* RGB light sensor breakout board ISL29125 - Sparkfun, $7.95 
+* NTC thermistor - Digikey, $2.26
+* Analog turbidity sensor SEN0189 - DFRobot, $9.90
+* nRF24L01+ Enhanced Wireless Module - GearBest, $0.99
+* ATMega328P microcontroller - Mouser, $2.26
+* MCP1700 low quiescent current regulator - Mouser, $0.40
+* 1.5V Alkaline AA batteries (3x per puck) - Amazon, 
+* $2.30 Custom-designed PCB combining sensing, comms and MCU
+* Custom-designed, 3D-printed plastic and lasercut acrylic puck
+* Efficient custom data transfer protocol
+
+![Custom data protocol](/images/radio_protocol.png)
+
+## Hub
+
+* Raspberry Pi 3 Model B (ARMv8, 1GB RAM) - Adafruit, $39.95
+* nRF24L01+ Enhanced Wireless Module - GearBest, $0.99
+* Custom Protocol Buffer (protobuf) to upload data to server
+
+## Server
+
+* Python and Tornado server to listen to hub data
+* Protobuf to decode data stream from hub
+* Google Remote Procedure Call (gRPC) server for Android app
+
+## Smartphone App
+
+* Android Operating System
+* Google Remote Procedure Call (gRPC) client to fetch urination data from server
+* Protobuf to decode data stream from server
+* Google Play Computer Vision library for QR code detection
+* MPAndroidChart for data visualization
+
+## Demonstration Urinal
+
+* Sponsored Urinal
+* 2x4 Lumber for frame
+* Copper tubing
+* 2x 5 gallon drums for water storage
+* Water pump to pressurize system
+* QR Code to identify puck and hub
 
 # Architecture
 
@@ -161,7 +173,7 @@ pucks and periodically send it to the city-wide server for further processing.
 A user can also connect to the local hub to gather basic analytics and data
 after indicating their desire to receive such data.
 
-![Architecture diagram 1](/images/arch2.png)
+![Architecture diagram 2](/images/arch2.png)
 
 # System Interaction
 
@@ -175,7 +187,7 @@ of its various sensors through either an I2C ADC or directly over I2C. The puck
 transmits its data to the hub over an I2C radio, which then forwards the
 information to the server via WiFi.
 
-![Architecture diagram 1](/images/interaction1.png)
+![Interaction diagram 1](/images/interaction.png)
 
 # Team Members
 
