@@ -21,7 +21,6 @@ bool init_temp(){
 
 void turn_on_temp(){
   digitalWrite(POWER_THERM_PIN, HIGH);
-  delay(10);
 }
 
 void turn_off_temp(){

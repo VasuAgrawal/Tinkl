@@ -23,6 +23,10 @@ void turn_off_radio(){
 }
 
 
+void powerUp_radio(){
+  radio.powerUp();
+}
+
 bool radio_send(uint8_t *data, uint8_t length){
     if(length > MAX_PAYLOAD_LEN) return 1;
 

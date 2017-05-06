@@ -6,7 +6,6 @@
 static SFE_ISL29125 RGB_sensor;
 
 bool init_color(){
-  // init_color should return true if RGB_sensor.init() was unsuccessful
   return RGB_sensor.init();
 }
 

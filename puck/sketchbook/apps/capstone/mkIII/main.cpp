@@ -54,23 +54,35 @@ void turn_on_everything(){
 }
 
 void turn_off_everything(){
+    Serial.flush();
+
     turn_off_color();
     turn_off_radio();
     turn_off_temp();
     turn_off_turbidity();
 
     digitalWrite(POWER_SYS_PIN, LOW);
+
+    int i;
+    for(i=2;i<=13;i++){
+        digitalWrite(i, LOW);
+    }
+
+    digitalWrite(SDA, 0);
+    digitalWrite(SCL, 0);
 }
 
 void setup() {
     Serial.begin(115200);
     Serial.println("Starting!");
+    Serial.flush();
 
     pinMode(POWER_SYS_PIN, OUTPUT);
     digitalWrite(POWER_SYS_PIN, HIGH);
 
     Serial.println("0");
 
+    delay(100);
 
     // Initialize sensors
     if(init_color() == false) Serial.println("Failed to init color sensor"); 
@@ -112,22 +124,21 @@ void wake_up(){
         // Make a packet!
         tinkl_packet *pkt = make_packet();
         print_packet(*pkt);
+
         // Set the "last sample" flag
         pkt->last_packet = (sc + 1 == MAX_SAMPLES);
         radio_send((uint8_t*) pkt, sizeof(tinkl_packet));
-        delay(SAMPLE_PERIOD);    
-    }
-    Serial.println("DONE");
-    turn_off_everything();
-}
 
-uint8_t pressed(){
-    uint8_t pflag = 0;
-    while(Serial.available()){ // empty the serial buffer
-        pflag = 1;
-        Serial.read();
+        turn_off_radio();
+        // turn_off_everything();
+        Serial.flush();
+        LowPower.powerDown(SLEEP_500MS, ADC_OFF, BOD_OFF);  
+        // turn_on_everything();        
+        powerUp_radio();
+        // delay(SAMPLE_PERIOD);    
     }
-    return pflag;
+    // Serial.println("DONE");
+    turn_off_everything();
 }
 
 int main(){
@@ -137,36 +148,16 @@ int main(){
     int i=0;
     while(1){
         LowPower.powerDown(SLEEP_250MS, ADC_OFF, BOD_OFF);  
+        // LowPower.powerDown(SLEEP_2S, ADC_OFF, BOD_OFF);  
  
-        // Serial.begin(115200);
-
-        // Serial.flush();
-
-        i++;
-        // Serial.println("Hi");
-        // Serial.println(i);
-
-        // delay(250);
-
         uint16_t cur_temp;
         turn_on_temp();
         read_temp(cur_temp);
         turn_off_temp();
  
-        Serial.println(cur_temp);
-        Serial.flush();
-
         // Check if it's time to wake up
-        if(
-        cur_temp < WAKE_UP_ABSOLUTE_THRESHOLD
-        || pressed()
-        ){
+        if(cur_temp < WAKE_UP_ABSOLUTE_THRESHOLD){
             wake_up();
-
-            // Impose a 20-second timeout between separate urinations
-        //     LowPower.powerDown(SLEEP_8S, ADC_OFF, BOD_OFF);  
-        //     LowPower.powerDown(SLEEP_4S, ADC_OFF, BOD_OFF);  
-        //     LowPower.powerDown(SLEEP_8S, ADC_OFF, BOD_OFF);  
         }
     }
     return 0;
