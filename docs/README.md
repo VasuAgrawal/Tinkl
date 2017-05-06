@@ -1,8 +1,7 @@
-# Tinkl
-
 [Insert tinkl logo here]
 
 # Concept
+
 Tinkl is a health monitoring system spread out across the city that
 uses information from lavatory usage to allow individuals to keep tabs on their
 health on the go, and to allow the city to be apprised of the collective health
@@ -29,20 +28,29 @@ allowing for the city's collective health to be monitored in real time.
 
 # Requirements
 
-## Functional * Urinal puck is capable of collecting urine and analyzing its
-color, clarity and temperature * Collection mechanism capable of preventing
-cross-contamination of urine samples across different individuals * System is
+## Functional
+
+* Urinal puck is capable of collecting urine and analyzing its
+color, clarity and temperature
+* Collection mechanism capable of preventing
+cross-contamination of urine samples across different individuals 
+* System is
 capable of predicting basic health markers like hydration level and basal body
-temperature from collected data * System provides means for individuals to log
+temperature from collected data 
+* System provides means for individuals to log
 when they are using a urinal and access health data on demand via a smartphone
-app * System stores anonymized collected data on central server, visible only
+app 
+* System stores anonymized collected data on central server, visible only
 to city authorities for city-wide health monitoring
 
-## Nonfunctional * Urinal puck should be small and waterproofed (up to IP65
-rating) * Urinal puck should be unobtrusive, preventing user discomfort *
-Urinal puck should last ~2 weeks - 1 month on a battery
+## Nonfunctional 
 
-# Use Cases Our systems are designed to allow people to increase awareness of
+* Urinal puck should be small and waterproofed (up to IP65 rating) 
+* Urinal puck should be unobtrusive, preventing user discomfort 
+* Urinal puck should last ~2 weeks - 1 month on a battery
+
+# Use Cases 
+Our systems are designed to allow people to increase awareness of
 their health, by enhancing the accessibility of key health markers available in
 urine. We envision several possible use cases for this system: Similar to
 Hydralert's concept, our system can enhance workplace safety. In industries
@@ -62,21 +70,26 @@ available in an easily understandable format at the touch of a button.
 
 ## Hardware
 
-Raspberry Pi 3 Model B (ARMv8, 1GB RAM) - Adafruit, $39.95 RGB light sensor
-breakout board ISL29125 - Sparkfun, $7.95 Infrared thermopile sensor breakout
-TMP006 - Adafruit, $9.95 NTC thermistor - Digikey, $2.26 Analog turbidity
-sensor SEN0189 - DFRobot, $9.90 nRF24L01+ Enhanced Wireless Module - GearBest,
-$0.99 ATMega328P microcontroller - Mouser, $2.26 MCP1700 low quiescent current
-regulator - Mouser, $0.40 MCP3426 16-bit ADC - Mouser, $2.84 MIC5219 500mA-peak
-LDO regulator - Mouser, $1.26 1.5V Alkaline AA batteries (4x per puck) -
-Amazon, $2.30 Custom-designed PCB combining sensing, comms and MCU
-Custom-designed, 3D-printed plastic puck
+* Raspberry Pi 3 Model B (ARMv8, 1GB RAM) - Adafruit, $39.95
+* RGB light sensor breakout board ISL29125 - Sparkfun, $7.95 
+* Infrared thermopile sensor breakout TMP006 - Adafruit, $9.95
+* NTC thermistor - Digikey, $2.26
+* Analog turbidity sensor SEN0189 - DFRobot, $9.90
+* nRF24L01+ Enhanced Wireless Module - GearBest, $0.99
+* ATMega328P microcontroller - Mouser, $2.26
+* MCP1700 low quiescent current regulator - Mouser, $0.40
+* MCP3426 16-bit ADC - Mouser, $2.84
+* MIC5219 500mA-peak LDO regulator - Mouser, $1.26
+* 1.5V Alkaline AA batteries (4x per puck) - Amazon, 
+* $2.30 Custom-designed PCB combining sensing, comms and MCU
+* Custom-designed, 3D-printed plastic puck
 
 ## Software
 
-Open-EMR - open source electronic health/medical records-keeping system. Can be
-connected to a MySQL server that stores collected health data.  MySQL - open
-source database technology that can be used to store collected health data.
+* Open-EMR - open source electronic health/medical records-keeping system. Can 
+be connected to a MySQL server that stores collected health data.  
+* MySQL - open source database technology that can be used to store collected 
+health data.
 
 ## Protocols
 
@@ -85,12 +98,12 @@ Pi hub
 
 # Competitive Analysis
 
-## Underworlds - project by MIT's Senseable City Lab
+## UnderworldsMIT's Senseable City Lab
 
-Research project analyzing wastewater and sewage for biomarkers of human
-health, with the goal of massively collecting data and using ananalytics to
-allow the health of the city to be monitored, from the scale of a neighborhood
-to the aggregate health of the entire city.
+Research project by MIT's Senseable City Lab analyzing wastewater and sewage for
+biomarkers of human health, with the goal of massively collecting data and using
+ananalytics to allow the health of the city to be monitored, from the scale of a
+neighborhood to the aggregate health of the entire city.
 
 While this project aims to enable city-wide health monitoring through
 large-scale, city-wide data collection and analytics just like the Underworlds
@@ -158,4 +171,7 @@ information to the server via WiFi.
 
 # Team
 
-* Matthew Lee * Joel Loo * Vasu Agrawal * Eric Fang
+* Matthew Lee 
+* Joel Loo 
+* Vasu Agrawal 
+* Eric Fang
