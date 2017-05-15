@@ -306,3 +306,6 @@ waiting to be explored.
   Poster (PDF)](https://drive.google.com/file/d/0BwdI0A5s_UwvUFBrWlU4NEZXdkE/view?usp=sharing)
 * [Midsemester
   Presentation (PPT)](https://docs.google.com/presentation/d/1eH9g_bitqXYJriN3yyhiHkPiWwhJeO1CGgPf4aCRGDc/edit?usp=sharing)
+* [Pictures and
+  Videos](https://drive.google.com/drive/folders/0B31KBJSOYo9LNTVUSnRzS2QxSmM?usp=sharing)
+
