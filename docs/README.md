@@ -1,4 +1,5 @@
 ![Tinkl Logo](/images/tinkl_logo.png)
+![Glamour Shot of Puck](/images/puck_glamour.jpg)
 
 # Concept
 
@@ -189,9 +190,119 @@ information to the server via WiFi.
 
 ![Interaction diagram 1](/images/interaction.png)
 
+# Final Product
+
+After a semester's work, we produced a puck capable of measuring turbidity,
+temperature, and color from urine samples. The puck has a watertight enclosure
+to protect from the harsh conditions to which it is exposed. It uses an
+algorithm optimized for low power usage in order to obtain the projected battery
+life of approximately 1 year. The samples gathered by the puck are aggregated
+into a urination event, which is then sent to the hub inside the bathroom. The
+hub forwards data to the server. This data can be accessed from the user's
+smartphone when they scan the QR code next to the urinal; the Android
+application will then request the data for the most recent urination event for
+that urinal from the server. The server will respond with the data if it is less
+than 5 minutes old, as a security measure. After this process, another person
+may use the urinal, and the cycle will begin again.
+
+For more detail on the development process, as well as specific numbers and
+charts, please see our final report (linked below).
+
+## Sensing Algorithm
+
+```
+while True:
+    temp = read_from_thermistor()
+    if temp > threshold: // Take detailed sensor readings
+        samples = []
+        for sample_number = 1 ... 30:
+            samples[i] = take_sample()
+            short_sleep()
+        send_data_to_hub()
+    else: // There's no urine, wait for some time.
+        long_sleep()
+```
+
+## Puck Design
+
+The puck design consists of a 3d printed enclosure, sealed with epoxy,
+surrounding a custom PCB which houses the sensors, radio, and MCU. Inside, above
+the PCB is a space for the batteries, as well as the breakout board for the
+turbidity sensor. The individual components are labeled below, as well as a fun
+picture of the bottom of the puck.
+
+![Labeled Puck Design](/images/puck_detail.jpg)
+![Puck Bottom](/images/puck_bottom.jpg)
+
+## Overall Changes
+
+Our original plan was to design a system to be useful at both a personal and
+institutional setting. However, privacy concerns arose over the course of the
+semester which suggested that we target only a personal use case, so we adapted
+our model to focus primarily on individual users. It is for this reason that
+data is inaccessible on the server after 5 minutes. Switching the system to
+allow an institutional viewer to look at the data would not be technically
+complex, but would require exploring privacy problems which proved to be beyond
+the scope of our project.
+
+For the majority of the semester, the puck design revolved around restricting
+the urine stream through the drain, allowing it to pool up, and then analyzing
+the pooled liquid as it slowly drained. Shortly before the demo, however, we
+realized that this design prevented multiple uses of the urinal in quick
+succession; each flush would take upwards of 5 minutes to drain, which is not
+acceptable for an industrial setting. Instead, we decided to remove the flow
+restrictor and elevate the puck above the surface of the water. We then oriented
+the turbidity sensor such that it was always below the resting water line of the
+urinal, and found this to be a much better design overall for both portablity
+and usefulness; the puck could now be transferred to almost any similar urinal,
+and did not limit flushes at all.
+
+Apart from these minor changes, we are happy to say that the rest of the
+system was implemented exactly as designed. Our architecture and communication
+protocols at every level proved sufficient and robust enough for our
+application, indicative of the thought and care we put into the designs
+beforehand.
+
+# Future Work
+
+A conference call with one of our sponsors, Kohler, revelead a number of areas
+for possible future work. One in particular stands out as potentially
+game-changing for urinals. Today's automated flush mechanisms rely on cheap IR
+distance sensors which are often inaccurate and error prone. Many flushes happen
+prematurely, or can simply be triggered by a passerby. IR sensors may also
+become blocked a result of smoking or chewing gum usage. Such an error prone
+system necessitates the inclusion of a manual flush valve. Due to the direct
+contact thermistor in our system, we detect the presence of urine much more
+accurately than existing systems. It is possible to integrate this detection
+into the flush mechanism as a trigger. The high precision would all but remove
+the need for a flush valve, permiting the cost savings to be passed into the
+development of the puck. Clearly, there is enormous potential here simply
+waiting to be explored.
+
 # Team Members
 
 * [Matthew Lee](https://github.com/mattlkf)
 * [Joel Loo](https://github.com/joelloo)
 * [Vasu Agrawal](https://github.com/VasuAgrawal)
 * [Eric Fang](https://github.com/eric1221bday)
+
+# Acknowledgements
+
+* Anthony Rowe, our professor, for being as excited about our project as we were
+* Craig Hesling, our TA, for guiding us through this journey
+* [Kohler](http://www.kohler.com/corporate/index.html), for the donation of a 
+  urinal and flush valve, as well as the advice
+  and guidance of their engineers
+* [Sloan](https://www.sloan.com), for the donation of our first  urinal and 
+  flush valve, used in our final demonstration.
+* [American Standard](https://www.americanstandard-us.com/), for the donation of
+  a urinal and flush valve.
+
+# Links
+
+* [Final Report
+  (PDF)](https://drive.google.com/file/d/0BzCB5gz-bnecOVdhTEpMcVZ5VXc/view?usp=sharing)
+* [Final
+  Poster (PDF)](https://drive.google.com/file/d/0BwdI0A5s_UwvUFBrWlU4NEZXdkE/view?usp=sharing)
+* [Midsemester
+  Presentation (PPT)](https://docs.google.com/presentation/d/1eH9g_bitqXYJriN3yyhiHkPiWwhJeO1CGgPf4aCRGDc/edit?usp=sharing)
