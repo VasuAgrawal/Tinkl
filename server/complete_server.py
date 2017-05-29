@@ -52,35 +52,54 @@ class TinklServer(tinkl_pb2_grpc.TinklServicer):
                 logging.warning("Requested key not in data set: %s", key)
                 return Sample()
 
-            FIVE_MINUTES = 60 * 5
-            if time.time() - timestamp < FIVE_MINUTES:
-                out = Sample()
-                for i, sample in enumerate(urination.samples):
-                    out.temperature = (
-                        (out.temperature * i + sample.temperature) / (i+1))
-                    out.turbidity = (
-                        (out.turbidity * i + sample.turbidity) // (i+1))
-                    out.color.r = (
-                        (out.color.r * i + sample.color.r) // (i+1))
-                    out.color.g = (
-                        (out.color.g * i + sample.color.g) // (i+1))
-                    out.color.b = (
-                        (out.color.b * i + sample.color.b) // (i+1))
+        FIVE_MINUTES = 60 * 5
+        if time.time() - timestamp < FIVE_MINUTES:
+            out = Sample()
+            for i, sample in enumerate(urination.samples):
+                out.temperature = (
+                    (out.temperature * i + sample.temperature) / (i+1))
+                out.turbidity = (
+                    (out.turbidity * i + sample.turbidity) // (i+1))
+                out.color.r = (
+                    (out.color.r * i + sample.color.r) // (i+1))
+                out.color.g = (
+                    (out.color.g * i + sample.color.g) // (i+1))
+                out.color.b = (
+                    (out.color.b * i + sample.color.b) // (i+1))
 
-                # Return actually valid data.
-                return out
+            # Return actually valid data.
+            return out
 
-            else:
-                logging.warning("Requested key %s has expired. "
-                        "Original timestamp %f, current %f.", key, timestamp,
-                        time.time())
-                return Sample()
+        else:
+            logging.warning("Requested key %s has expired. "
+                    "Original timestamp %f, current %f.", key, timestamp,
+                    time.time())
+            return Sample()
 
         return Sample()
 
 
     def getAllUrination(self, request, context):
-        return Sample()
+        key = (request.hub_id, request.sensor_node_id)
+        global urination_data
+        global urination_data_lock
+
+        with urination_data_lock:
+            if key in urination_data:
+                timestamp, urination = copy.deepcopy(urination_data[key])
+            else:
+                logging.warning("Requested key not in data set: %s", key)
+                return Sample()
+
+        FIVE_MINUTES = 60 * 5
+        if time.time() - timestamp < FIVE_MINUTES:
+            for sample in urination.samples:
+                yield sample
+        else:
+            logging.warning("Requested key %s has expired. "
+                    "Original timestamp %f, current %f.", key, timestamp,
+                    time.time())
+            return Sample()
 
 
 class DataServer(tornado.tcpserver.TCPServer):
@@ -119,7 +138,7 @@ class DataServer(tornado.tcpserver.TCPServer):
 
 
 if __name__ == "__main__":
-    logging.getLogger().setLevel(logging.DEBUG)
+    logging.getLogger().setLevel(logging.INFO)
 
     try:
         my_ip = urlopen("http://ip.42.pl/raw").read().decode('ascii')

@@ -50,7 +50,7 @@ def main():
     logging.getLogger().setLevel(logging.DEBUG)
     logging.info("Connecting to server.")
     client = tornado.tcpclient.TCPClient()
-    client.connect("localhost", 5001, callback=my_callback)
+    client.connect("olympus.wv.cc.cmu.edu", 5001, callback=my_callback)
     tornado.ioloop.IOLoop.instance().start()
 
 if __name__ == "__main__":
