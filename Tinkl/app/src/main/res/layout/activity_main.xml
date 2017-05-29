@@ -7,17 +7,6 @@
     tools:context="com.tinkl.tinkl.MainActivity"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/result_textview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/no_barcode_captured"
-        android:textSize="22sp"
-        android:freezesText="true"
-        android:layout_centerVertical="true"
-        android:gravity="center"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"/>
-
     <Button
             android:id="@+id/scan_barcode_button"
             android:layout_width="match_parent"
@@ -28,24 +17,15 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"/>
 
-    <Button
-            android:background="@drawable/color_patch"
-            android:layout_width="80pt"
-            android:layout_height="80pt"
-            android:layout_marginTop="50dp"
-            android:id="@+id/urine_color"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"/>
-
     <TextView
             android:id="@+id/turbidity_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
-            android:textSize="60sp"
+            android:textSize="30sp"
             android:freezesText="true"
             android:gravity="center"
-            android:layout_marginBottom="10pt"
+            android:layout_marginBottom="5pt"
             android:layout_above="@+id/temperature_textview"
             android:layout_alignParentStart="true"/>
 
@@ -54,10 +34,51 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
-            android:textSize="60sp"
+            android:textSize="30sp"
+            android:freezesText="true"
+            android:gravity="center"
+            android:layout_marginBottom="5pt"
+            android:layout_above="@+id/hydrated_textview"
+            android:layout_centerHorizontal="true"/>
+
+    <TextView
+            android:id="@+id/hydrated_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="50sp"
             android:freezesText="true"
             android:gravity="center"
             android:layout_marginBottom="10pt"
             android:layout_above="@+id/scan_barcode_button"
+            android:layout_centerHorizontal="true"/>
+
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/tinkl_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:popupTheme="@style/ThemeOverlay.AppCompat.Dark"/>
+
+    <TextView
+        android:id="@+id/result_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_barcode_captured"
+        android:textSize="22sp"
+        android:freezesText="true"
+        android:gravity="center"
+        android:layout_above="@+id/turbidity_textview"
+        android:layout_alignParentStart="true"/>
+
+    <Button
+            android:background="@drawable/color_patch"
+            android:layout_width="80pt"
+            android:layout_height="80pt"
+            android:id="@+id/urine_color"
+            android:layout_marginTop="35pt"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"/>
 </RelativeLayout>

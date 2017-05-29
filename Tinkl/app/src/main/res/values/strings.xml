@@ -6,7 +6,9 @@
     <string name="no_barcode_captured">No QR code captured</string>
     <string name="barcode_error_format">"Error reading barcode: %1$s"</string>
     <string name="temperature">%1$f\u2103</string>
-    <string name="turbidity">%1$d NTU</string>
+    <string name="turbidity">%1$d NTU/%2$s</string>
+    <string name="hydrated">Hydrated!</string>
+    <string name="not_hydrated">Drink More Water!</string>
     <string name="grpc_error">Error Retrieving Data!</string>
 
     <!-- Strings related to barcode scanner -->
@@ -14,4 +16,9 @@
     <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
     <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
     <string name="low_storage_error">Face detector dependencies cannot be downloaded due to low device storage</string>
+    <string name="current_menu">Current</string>
+    <string name="history_menu">History</string>
+    <string name="details_menu">Details</string>
+    <string name="no_readings">No Current Readings!</string>
+    <string name="warning">Warning</string>
 </resources>

@@ -21,6 +21,12 @@
                 <activity
                         android:name=".barcode.BarcodeCaptureActivity"
                         android:theme="@style/Theme.AppCompat.NoActionBar"/>
+                <activity
+                        android:name=".HistoryDisplayActivity"
+                        android:theme="@style/AppTheme"/>
+                <activity
+                        android:name=".DetailsDisplayActivity"
+                        android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

@@ -1,0 +1,12 @@
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+Color	/Users/eric1221bday/sandbox/Tinkl/server/single_client.py	/^from tinkl_pb2 import Color$/;"	i	language:Python
+logging	/Users/eric1221bday/sandbox/Tinkl/server/single_client.py	/^import logging$/;"	i	language:Python
+main	/Users/eric1221bday/sandbox/Tinkl/server/single_client.py	/^def main():$/;"	f	language:Python
+my_callback	/Users/eric1221bday/sandbox/Tinkl/server/single_client.py	/^def my_callback(stream):$/;"	f	language:Python
+packet	/Users/eric1221bday/sandbox/Tinkl/server/single_client.py	/^import packet$/;"	i	language:Python
+random	/Users/eric1221bday/sandbox/Tinkl/server/single_client.py	/^import random$/;"	i	language:Python
+Sample	/Users/eric1221bday/sandbox/Tinkl/server/single_client.py	/^from tinkl_pb2 import Sample$/;"	i	language:Python
+tcpclient	/Users/eric1221bday/sandbox/Tinkl/server/single_client.py	/^import tornado.tcpclient$/;"	i	language:Python
+tornado	/Users/eric1221bday/sandbox/Tinkl/server/single_client.py	/^import tornado$/;"	i	language:Python
+tornado	/Users/eric1221bday/sandbox/Tinkl/server/single_client.py	/^import tornado.tcpclient$/;"	i	language:Python
+Urination	/Users/eric1221bday/sandbox/Tinkl/server/single_client.py	/^from tinkl_pb2 import Urination$/;"	i	language:Python
